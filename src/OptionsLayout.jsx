@@ -1,18 +1,22 @@
-import OptionCard from "./OptionCard";
 import Stack from "@mui/material/Stack";
+import BetterOptionCard from "./BetterOptionCard";
 
 export default function OptionsLayout({ data }) {
   return (
-    <>
-      <Stack direction="row" spacing={2}>
-        {data.map((i, idx) => {
-          return (
-            <Stack key={idx}>
-              <OptionCard key={i.id} data={i} />
-            </Stack>
-          );
-        })}
-      </Stack>
-    </>
+    <Stack
+      direction="row"
+      spacing={3}
+      sx={{
+        justifyContent: "center",
+        alignItems: "flex-start",
+        p: 4,
+        minHeight: "100vh",
+        backgroundColor: "#ffffff",
+      }}
+    >
+      {data.map((item) => (
+        <BetterOptionCard key={item.id} data={item} />
+      ))}
+    </Stack>
   );
 }

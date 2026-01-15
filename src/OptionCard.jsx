@@ -3,7 +3,7 @@ import CardActions from "@mui/material/CardActions";
 import { CardActionArea } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
+
 import Typography from "@mui/material/Typography";
 import { v4 as uuid } from "uuid";
 import * as React from "react";
@@ -48,22 +48,31 @@ export default function OptionCard({ data }) {
     <Card sx={{ maxWidth: 345, position: "relative", pb: expanded ? 3.5 : 0 }}>
       <CardActionArea>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography
+            gutterBottom
+            variant="h7"
+            sx={{
+              fontWeite: "bold",
+            }}
+            component="div"
+          >
             {data.optionName}
           </Typography>
-          <Typography gutterBottom variant="h5" component="span">
+
+          <Typography gutterBottom variant="h4" component="span">
             ${data.price}
           </Typography>
-          <Typography gutterBottom variant="h8" component="span">
-            / month
+          <Typography gutterBottom variant="h4" component="span">
+            /mo.
           </Typography>
           <Typography
             variant="ul"
             sx={{
               color: "text.secondary",
-              pl: 2,
-              ml: 0,
+              p: 0,
+
               listStylePosition: "inside",
+              listStyle: "none",
             }}
           >
             {data.info.map((i) => {
@@ -72,20 +81,12 @@ export default function OptionCard({ data }) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <IconButton
-        onClick={handleExpandClick}
-        sx={{
-          position: "absolute",
-          bottom: 8,
-          right: 8,
-        }}
-      >
-        <ExpandMoreIcon />
-      </IconButton>
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent sx={{ p: 0 }}>
-          <CardMedia sx={{ height: 140 }} image={data.gif} title="gif" />
+          <Typography gutterBottom variant="h8" component="span">
+            {data.calculation}
+          </Typography>
         </CardContent>
       </Collapse>
     </Card>
